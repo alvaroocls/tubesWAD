@@ -11,7 +11,9 @@
 <body class="text-white">
     <x-navbar></x-navbar>        
     <div class="mt-28">
+        
         {{$content}}
+
     </div>
     <x-footer></x-footer>
 </body>
