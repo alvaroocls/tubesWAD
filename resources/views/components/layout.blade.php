@@ -6,8 +6,6 @@
     <title>About</title>
     @vite(['resources/css/app.css','resources/js/app.js'])
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-
-</head>
 <body class="text-white">
     <x-navbar></x-navbar>        
     <div class="mt-28">
