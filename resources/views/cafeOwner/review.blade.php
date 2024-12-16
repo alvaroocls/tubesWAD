@@ -1,7 +1,5 @@
 <x-layout>
     <x-slot:content>
-        <h1>
-            Ini home nya musician
-        </h1>
+        review disini ya
     </x-slot:content>
 </x-layout>
