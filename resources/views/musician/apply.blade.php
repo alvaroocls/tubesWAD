@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot:content>
-        ini apply
+        halo halo bandung
     </x-slot:content>
 
 </x-layout>
