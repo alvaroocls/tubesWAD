@@ -2,31 +2,24 @@
 
 namespace App\View\Components;
 
-use Closure;
-use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class card extends Component
+class Card extends Component
 {
-   
-    /**
-     * Create a new component instance.
-     */
     public $emoji;
     public $title;
     public $description;
-    public function __construct($emoji, $title, $description)
+    public $link;
+
+    public function __construct($emoji, $title, $description, $link)
     {
-        //
         $this->emoji = $emoji;
         $this->title = $title;
         $this->description = $description;
+        $this->link = $link;
     }
 
-    /**
-     * Get the view / contents that represent the component.
-     */
-    public function render(): View|Closure|string
+    public function render()
     {
         return view('components.card');
     }
