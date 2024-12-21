@@ -34,4 +34,9 @@ class User extends AuthenticatableModel implements AuthenticatableContract
         return $this->role === 'cafeOwner';
     }
 
+    public function postingJobs()
+    {
+        return $this->hasMany(PostingJob::class);
+    }
+
 }
