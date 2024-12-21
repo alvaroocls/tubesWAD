@@ -38,5 +38,9 @@ class User extends AuthenticatableModel implements AuthenticatableContract
     {
         return $this->hasMany(PostingJob::class);
     }
+    public function applications()
+    {
+    return $this->hasMany(ApplyJob::class);
+    }
 
 }

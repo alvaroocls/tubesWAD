@@ -41,9 +41,6 @@ Route::get('/musician/review',function(){
     return view('musician.review');
 })->name('musician.review');
 
-Route::get('/musician/apply',function(){
-    return view('musician.apply');
-})->name('musician.apply');
 
 Route::get('/musician/portofolio',function(){
     return view('musician.portofolio');
@@ -76,3 +73,16 @@ Route::get('/cafeOwner/profile',function(){
 Route::get('/cafeOwner/review',function(){
     return view('cafeOwner.review');
 })->name('cafeOwner.review');
+
+use App\Http\Controllers\ApplyJobController;
+
+Route::middleware('auth')->group(function () {
+    Route::get('/jobs', [ApplyJobController::class, 'index'])->name('jobs.index');
+    Route::get('/jobs/{id}', [ApplyJobController::class, 'show'])->name('jobs.show');
+    Route::post('/jobs/{id}/apply', [ApplyJobController::class, 'apply'])->name('jobs.apply');
+    Route::get('/jobs/showapply', [ApplyJobController::class, 'showAppliedJobs'])->name('jobs.apply.view');
+});
+
+
+
+

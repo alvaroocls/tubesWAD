@@ -28,8 +28,7 @@
                     emoji="🎤" 
                     title="Apply Live Music" 
                     description="Ajukan lamaran untuk live music di Cafe."
-                    link="{{ route('musician.apply') }}" />
-            </div>
+                    link="{{ route('jobs.index') }}" /> 
         </div>
     </x-slot:content>
 </x-layout>
