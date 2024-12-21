@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\PostingJobController;
 
 Route::get('/', function () {
     return view('landing');
@@ -64,7 +64,7 @@ Route::get('/cafeOwner/filter',function(){
 
 // Posting job section
 
-Route::get('/cafeOwner/postingjob',[PostingJobController::class,'index'])->name('cafeOwner.postingjob');
+Route::get('/cafeOwner/postingjob',[PostingJobController::class,'index'])->name('cafeOwner.postingjob.index');
 
 
 // Posting job section

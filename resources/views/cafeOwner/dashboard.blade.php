@@ -10,7 +10,7 @@
             </x-primarybutton>
         </a>
         
-        <a href="{{ route('cafeOwner.postingjob') }}">
+        <a href="{{ route('cafeOwner.postingjob.index') }}">
             <x-primarybutton>
                 posting job
             </x-primarybutton>
