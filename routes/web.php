@@ -63,8 +63,13 @@ Route::get('/cafeOwner/filter',function(){
 
 Route::get('/cafeOwner/postingjob',[PostingJobController::class,'index'])->name('cafeOwner.postingjob.index');
 
+Route::get('/cafeOwner/postingjob/create',[PostingJobController::class,'create'])->name('cafeOwner.postingjob.create');
 
+Route::post('/cafeOwner/postingjob',[PostingJobController::class,'store'])->name('cafeOwner.postingjob.store');
 // Posting job section
+
+
+
 
 Route::get('/cafeOwner/profile',function(){
     return view('cafeOwner.profile');

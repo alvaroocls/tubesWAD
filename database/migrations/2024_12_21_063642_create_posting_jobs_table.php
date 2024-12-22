@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('preferences');
             $table->date('date');
             $table->time('time');
+            $table->string('image');
         });
     }
 

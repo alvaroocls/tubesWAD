@@ -12,17 +12,18 @@ class PostingJob extends Model
         'description',
         'preferences',
         'date',
-        'time'
+        'time',
+        'image'
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-
     public function applications()
 {
     return $this->hasMany(ApplyJob::class, 'job_id');
 }
 
+    public $timestamps = false;
 }
