@@ -8,7 +8,18 @@
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 <body class="text-white">
     
-    <x-navbar></x-navbar>        
+    @auth
+        @if (auth()->user()->role == 'musician')
+            <x-navbar-musician></x-navbar-musician>
+        @elseif (auth()->user()->role == 'cafeOwner')
+            <x-navbarcafe-owner></x-navbarcafe-owner>
+        @endif    
+    @endauth
+
+    @guest
+        <x-navbar></x-navbar>
+    @endguest
+
     <div class="mt-28">
         
         {{$content}}
