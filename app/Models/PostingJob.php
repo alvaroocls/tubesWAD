@@ -25,5 +25,4 @@ class PostingJob extends Model
     return $this->hasMany(ApplyJob::class, 'job_id');
 }
 
-    public $timestamps = false;
 }

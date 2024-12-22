@@ -16,11 +16,12 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('title');
-            $table->string('description');
+            $table->longText('description');
             $table->string('preferences');
             $table->date('date');
             $table->time('time');
             $table->string('image');
+            $table->timestamps();
         });
     }
 

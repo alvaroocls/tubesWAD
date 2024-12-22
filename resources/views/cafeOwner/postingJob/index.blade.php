@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot:content>
-
+        
         <div class="max-w-6xl mx-auto">
             <h1 class="text-4xl font-bold">Your job listings</h1>
 
@@ -17,7 +17,7 @@
                     :image="$job->image"
                     :title="$job->title"
                     :description="$job->description"
-                    buttonLink="#"
+                    buttonLink="{{ route('cafeOwner.postingjob.show', $job) }}"
                     buttonText="Show detail"
                 ></x-card-img>     
             @endforeach

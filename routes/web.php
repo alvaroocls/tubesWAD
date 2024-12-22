@@ -69,6 +69,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/cafeOwner/postingjob/create',[PostingJobController::class,'create'])->name('cafeOwner.postingjob.create');
 
     Route::post('/cafeOwner/postingjob',[PostingJobController::class,'store'])->name('cafeOwner.postingjob.store');
+
+    Route::get('/cafeOwner/postingjob/{id}',[PostingJobController::class,'show'])->name('cafeOwner.postingjob.show');
+
+    Route::get('/cafeOwner/postingjob/{id}/edit', [PostingJobController::class, 'edit'])->name('cafeOwner.postingjob.edit');
+
+    Route::put('/cafeOwner/postingjob/{id}', [PostingJobController::class, 'update'])->name('cafeOwner.postingjob.update');
+
+    Route::delete('/cafeOwner/postingjob/{id}', [PostingJobController::class, 'destroy'])->name('cafeOwner.postingjob.destroy');
     // Posting job section
 
     Route::get('/cafeOwner/profile',function(){

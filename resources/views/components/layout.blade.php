@@ -6,6 +6,7 @@
     <title>About</title>
     @vite(['resources/css/app.css','resources/js/app.js'])
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+
 <body class="text-white">
     
     @auth
