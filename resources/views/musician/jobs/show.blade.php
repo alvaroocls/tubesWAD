@@ -60,7 +60,7 @@
             <div class="bg-white rounded-3xl shadow-2xl p-8 max-w-lg text-center">
                 <h2 class="text-3xl font-extrabold text-indigo-700 mb-6">Lamaran Berhasil Diajukan</h2>
                 <p class="text-lg text-gray-700 mb-8">Lamaran Anda telah berhasil diajukan. Anda dapat memeriksa statusnya di halaman lamaran.</p>
-                <a href="{{ route('jobs.apply.view') }}"
+                <a href="{{ route('jobs.showapply') }}"
                    class="bg-indigo-600 text-white py-3 px-6 rounded-lg shadow-lg hover:bg-indigo-700 transition-all duration-200"
                 >
                     Lihat Lamaran Saya
