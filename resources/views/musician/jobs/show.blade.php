@@ -1,14 +1,11 @@
 <x-layout>
     <x-slot:content>
         <div class="container mx-auto p-8">
-            <!-- Judul Halaman -->
             <h1 class="text-4xl font-extrabold mb-8 text-white">
                 Detail Pekerjaan: {{ $job->title }}
             </h1>
 
-
             <div class="bg-white p-8 rounded-3xl shadow-xl transform transition-all hover:scale-105 duration-300 ease-in-out">
-                <!-- Deskripsi Pekerjaan -->
                 <h2 class="text-3xl font-semibold mb-6 text-indigo-700">
                     Deskripsi Pekerjaan
                 </h2>
@@ -16,7 +13,6 @@
                     {{ $job->description }}
                 </p>
 
-                <!-- Informasi Tambahan -->
                 <div class="mt-8 space-y-4">
                     <p class="text-lg text-gray-700">
                         <strong class="font-medium text-indigo-600">Disediakan oleh:</strong> {{ $job->user->name }}
@@ -32,12 +28,11 @@
                     </p>
                 </div>
 
-                <!-- Formulir Lamaran -->
                 <div class="mt-8">
                     <h3 class="text-2xl font-semibold mb-6 text-indigo-700">
                         Ajukan Lamaran
                     </h3>
-                    <form id="applyForm" action="{{ route('jobs.apply', $job->id) }}" method="POST" onsubmit="showModal(event)">
+                    <form id="applyForm" action="{{ route('jobs.apply', $job->id) }}" method="POST">
                         @csrf
                         <textarea 
                             name="message" 
@@ -55,7 +50,6 @@
             </div>
         </div>
 
-        <!-- Modal -->
         <div id="successModal" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 hidden">
             <div class="bg-white rounded-3xl shadow-2xl p-8 max-w-lg text-center">
                 <h2 class="text-3xl font-extrabold text-indigo-700 mb-6">Lamaran Berhasil Diajukan</h2>
@@ -72,7 +66,10 @@
 
 <script>
     function showModal(event) {
-        event.preventDefault(); // Mencegah pengiriman formulir default
-        document.getElementById('successModal').classList.remove('hidden');
+        event.preventDefault(); 
+        document.getElementById('successModal').classList.remove('hidden'); 
+        setTimeout(function() {
+            document.getElementById('applyForm').submit(); 
+        }, 1500); 
     }
 </script>

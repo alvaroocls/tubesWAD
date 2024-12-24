@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 
 class ApplyJobController extends Controller
 {
-    // Menampilkan daftar pekerjaan
+
     public function index()
     {
-        // Mengambil semua pekerjaan yang tersedia
+ 
         $jobs = PostingJob::all();
 
         // Mengirimkan data pekerjaan ke view yang berada di folder musician/jobs/index
@@ -28,28 +28,28 @@ class ApplyJobController extends Controller
     // Menangani aplikasi lamaran pekerjaan
     public function apply(Request $request, $id)
     {
-        $request->validate([
-            'message' => 'nullable|string|max:255',
-        ]);
+    $request->validate([
+        'message' => 'nullable|string|max:255',
+    ]);
 
-        // Cek apakah user sudah melamar pekerjaan
-        $existingApplication = ApplyJob::where('job_id', $id)
-            ->where('user_id', auth()->id())
-            ->first();
+    $existingApplication = ApplyJob::where('job_id', $id)
+        ->where('user_id', auth()->id())
+        ->first();
 
-        if ($existingApplication) {
-            return back()->with('error', 'Anda sudah melamar pekerjaan ini.');
-        }
-
-        // Simpan lamaran pekerjaan
-        ApplyJob::create([
-            'job_id' => $id,
-            'user_id' => auth()->id(),
-            'message' => $request->message,
-        ]);
-
-        return redirect()->route('jobs.apply.view')->with('success', 'Lamaran berhasil diajukan.');
+    if ($existingApplication) {
+        return back()->with('error', 'Anda sudah melamar pekerjaan ini.');
     }
+
+    ApplyJob::create([
+        'job_id' => $id,
+        'user_id' => auth()->id(),
+        'message' => $request->message,
+    ]);
+
+    return redirect()->route('jobs.showapply')->with('success', 'Lamaran berhasil diajukan.');
+    }
+
+
 
     public function showAppliedJobs()
     {
@@ -62,5 +62,57 @@ class ApplyJobController extends Controller
 
         return view('musician.jobs.showapply', compact('appliedJobs'));
     }
+    public function cancel($id)
+    {
+    $application = ApplyJob::findOrFail($id);
+
+    // Pastikan user hanya bisa menghapus lamarannya sendiri
+    if ($application->user_id !== auth()->id()) {
+        return redirect()->route('jobs.showapply')->with('error', 'Anda tidak memiliki izin untuk membatalkan lamaran ini.');
+    }
+
+    $application->delete();
+
+    return redirect()->route('jobs.showapply')->with('success', 'Lamaran berhasil dibatalkan.');
+    }
+    public function edit($id)
+    {
+    // Cari lamaran berdasarkan ID
+    $application = ApplyJob::findOrFail($id);
+
+    // Pastikan pengguna hanya bisa mengedit lamarannya sendiri
+    if ($application->user_id !== auth()->id()) {
+        return redirect()->route('jobs.showapply')->with('error', 'Anda tidak memiliki izin untuk mengedit lamaran ini.');
+    }
+
+    // Tampilkan form untuk edit lamaran
+    return view('musician.jobs.edit', compact('application'));  
+    }
+    public function update(Request $request, $id)
+    {
+    // Validasi input dari pengguna
+    $request->validate([
+        'message' => 'nullable|string|max:255',
+    ]);
+
+    // Cari lamaran berdasarkan ID
+    $application = ApplyJob::findOrFail($id);
+
+    // Pastikan pengguna hanya bisa mengedit lamarannya sendiri
+    if ($application->user_id !== auth()->id()) {
+        return redirect()->route('jobs.showapply')->with('error', 'Anda tidak memiliki izin untuk mengedit lamaran ini.');
+    }
+
+    // Perbarui pesan lamaran
+    $application->update([
+        'message' => $request->message,
+    ]);
+
+    // Redirect dengan pesan sukses
+    return redirect()->route('jobs.showapply')->with('success', 'Lamaran Anda berhasil diperbarui.');
+    }
+
+
+
 
 }

@@ -85,6 +85,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/jobs', [ApplyJobController::class, 'index'])->name('jobs.index');
     Route::get('/jobs/{id}', [ApplyJobController::class, 'show'])->name('jobs.show');
     Route::post('/jobs/{id}/apply', [ApplyJobController::class, 'apply'])->name('jobs.apply');
+    Route::delete('/jobs/{id}/cancel', [ApplyJobController::class, 'cancel'])->name('jobs.cancel');
+    Route::get('/jobs/{id}/edit', [ApplyJobController::class, 'edit'])->name('jobs.edit');
+    Route::put('/jobs/{id}', [ApplyJobController::class, 'update'])->name('jobs.update');
     Route::get('/showapply', [ApplyJobController::class, 'showAppliedJobs'])->name('jobs.showapply');
 });
 
