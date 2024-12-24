@@ -18,7 +18,7 @@
                                 <span class="text-indigo-600 font-medium">{{ ucfirst($application->status) }}</span>
                             </p>
                             
-                            <!-- Menampilkan pesan lamaran -->
+                            
                             @if ($application->message)
                                 <p class="mt-4 text-gray-800">
                                     <strong>Pesan Lamaran:</strong> {{ $application->message }}

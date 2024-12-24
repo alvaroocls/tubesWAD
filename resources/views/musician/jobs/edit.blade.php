@@ -11,7 +11,7 @@
                     @csrf
                     @method('PUT')
 
-                    <!-- Textarea untuk pesan lamaran -->
+                   
                     <textarea 
                         name="message" 
                         placeholder="Pesan untuk lamaran Anda" 
@@ -19,7 +19,7 @@
                         required
                     >{{ old('message', $application->message) }}</textarea>
                     
-                    <!-- Button untuk submit form -->
+                    
                     <button 
                         type="submit" 
                         class="mt-4 bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition duration-200">
