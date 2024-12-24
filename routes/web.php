@@ -80,7 +80,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/jobs', [ApplyJobController::class, 'index'])->name('jobs.index');
     Route::get('/jobs/{id}', [ApplyJobController::class, 'show'])->name('jobs.show');
     Route::post('/jobs/{id}/apply', [ApplyJobController::class, 'apply'])->name('jobs.apply');
-    Route::get('/jobs/showapply', [ApplyJobController::class, 'showAppliedJobs'])->name('jobs.apply.view');
+    Route::get('/showapply', [ApplyJobController::class, 'showAppliedJobs'])->name('jobs.showapply');
 });
 
 
