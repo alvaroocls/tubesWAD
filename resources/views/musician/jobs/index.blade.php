@@ -13,6 +13,13 @@
                     />
                 @endforeach
             </div>
+
+            <div class="mt-8 flex justify-center">
+                <a href="{{ route('jobs.showapply') }}" 
+                   class="bg-indigo-600 text-white py-3 px-6 rounded-lg shadow-lg hover:bg-indigo-700 transition-all duration-200">
+                    Lihat Lamaran Saya
+                </a>
+            </div>
         </div>
     </x-slot:content>
 </x-layout>
