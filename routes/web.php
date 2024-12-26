@@ -77,6 +77,11 @@ Route::middleware('auth')->group(function () {
     Route::put('/cafeOwner/postingjob/{id}', [PostingJobController::class, 'update'])->name('cafeOwner.postingjob.update');
 
     Route::delete('/cafeOwner/postingjob/{id}', [PostingJobController::class, 'destroy'])->name('cafeOwner.postingjob.destroy');
+
+    Route::get('/cafeOwner/postingjob/{id}/applicants', [PostingJobController::class, 'applicants'])->name('cafeOwner.postingjob.applicants');
+
+    Route::put('/cafeOwner/postingJob/applicants/{id}/update', [PostingJobController::class, 'updateStatus'])->name('cafeOwner.postingJob.applicants.update');
+
     // Posting job section
 
     Route::get('/cafeOwner/profile',function(){

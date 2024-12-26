@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\PostingJob;
 use App\Models\User;
-
+use App\Models\ApplyJob;
 
 class PostingJobController extends Controller
 {
@@ -91,5 +91,25 @@ class PostingJobController extends Controller
         $job = PostingJob::findOrFail($id);
         $job->delete();
         return redirect()->route('cafeOwner.postingjob.index')->with('success', 'Posting job deleted successfully!');
+    }
+
+    public function applicants($id)
+    {
+        $applicants = ApplyJob::where('job_id', $id)->with('user')->get();
+        return view('cafeOwner.postingJob.applicants', compact('applicants'));
+    }
+
+    public function updateStatus(Request $request,$id){
+        $validated = $request->validate([
+            'status' => 'required|in:accepted,rejected',
+        ]);
+
+        $application = ApplyJob::findOrFail($id);
+
+        $application->update([
+            'status' => $validated['status'],
+        ]);
+
+        return redirect()->back()->with('success', 'Application status updated successfully.');
     }
 }
