@@ -1,33 +1,29 @@
 <x-layout>
     <x-slot:content>
-        <h1>
-            Ini home nya Cafe Owner
-        </h1>
+        <div class="container mx-auto px-20">
+            <h1 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
+                Dashboard Cafe Owner
+            </h1>
 
-        <a href="{{ route('cafeOwner.filter') }}">
-            <x-primarybutton>
-                filter
-            </x-primarybutton>
-        </a>
-        
-        <a href="{{ route('cafeOwner.postingjob.index') }}">
-            <x-primarybutton>
-                posting job
-            </x-primarybutton>
-        </a>
-        
-        <a href="{{ route('cafeOwner.profile') }}">
-            <x-primarybutton>
-                profile
-            </x-primarybutton>
-        </a>
-        
-        <a href="{{ route('cafeOwner.review') }}">
-            <x-primarybutton>
-                review
-            </x-primarybutton>
-        </a>
-        
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <x-card 
+                    emoji="🎸" 
+                    title="Show Profile" 
+                    description="Lihat Profile Anda!"
+                    link="{{ route('cafeOwner.profile') }}" />
+
+                <x-card 
+                    emoji="⭐" 
+                    title="Review Anda" 
+                    description="Lihat feedback untuk cafe anda."
+                    link="{{ route('cafeOwner.review') }}" />
+
+                <x-card 
+                    emoji="🎤" 
+                    title="Posting Job" 
+                    description="Buat lowongan pekerjaan baru."
+                    link="{{ route('cafeOwner.postingjob.index') }}" /> 
+        </div>
 
     </x-slot:content>
 </x-layout>
