@@ -5,7 +5,7 @@
             <div class="flex space-x-4 overflow-x-auto">
                 @foreach ($jobs as $job)
                     <x-card-img 
-                        image="Gartenhaus.jpg" 
+                        image="{{ $job->image }}" 
                         title="{{ $job->title }}" 
                         description="{{ Str::limit($job->description, 100) }}" 
                         buttonText="Apply Now" 
