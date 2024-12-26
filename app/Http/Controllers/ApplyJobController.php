@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Barryvdh\DomPDF\Facade as PDF;
 
 use App\Models\PostingJob;
 use App\Models\ApplyJob;
@@ -9,13 +10,21 @@ use Illuminate\Http\Request;
 class ApplyJobController extends Controller
 {
 
-    public function index()
-    {
- 
-        $jobs = PostingJob::all();
+    public function index(Request $request)
+{
+    $search = $request->input('search');
 
-        return view('musician.jobs.index', compact('jobs'));
+    $jobs = PostingJob::query();
+
+    if ($search) {
+        $jobs->where('title', 'LIKE', '%' . $search . '%')
+             ->orWhere('description', 'LIKE', '%' . $search . '%');
     }
+
+    $jobs = $jobs->paginate(10);
+
+    return view('musician.jobs.index', compact('jobs'));
+}
 
     public function show($id)
     {
@@ -99,6 +108,8 @@ class ApplyJobController extends Controller
 
     return redirect()->route('jobs.showapply')->with('success', 'Lamaran Anda berhasil diperbarui.');
     }
+    
+    
 
 
 
