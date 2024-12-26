@@ -23,6 +23,12 @@
                     title="Posting Job" 
                     description="Buat lowongan pekerjaan baru."
                     link="{{ route('cafeOwner.postingjob.index') }}" /> 
+                
+                <x-card 
+                    emoji="💵" 
+                    title="Payment" 
+                    description="Bayar Musisi Anda."
+                    link="{{ route('cafeOwner.payment.index') }}" /> 
         </div>
 
     </x-slot:content>

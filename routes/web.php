@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostingJobController;
 use App\Http\Controllers\ApplyJobController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
@@ -91,6 +92,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/cafeOwner/review',function(){
         return view('cafeOwner.review');
     })->name('cafeOwner.review');
+
+    Route::get('/cafeOwner/payment', [PaymentController::class, 'index'])->name('cafeOwner.payment.index');
+
 
     Route::get('/jobs', [ApplyJobController::class, 'index'])->name('jobs.index');
     Route::get('/jobs/{id}', [ApplyJobController::class, 'show'])->name('jobs.show');

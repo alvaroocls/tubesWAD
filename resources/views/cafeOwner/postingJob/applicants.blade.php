@@ -58,17 +58,6 @@
         </table>
     </div>
 
-<script>
-    function approve(id) {
-        // Call an API or submit a form to approve the application
-        alert('Approved application with ID: ' + id);
-    }
-
-    function reject(id) {
-        // Call an API or submit a form to reject the application
-        alert('Rejected application with ID: ' + id);
-    }
-</script>
 
     </x-slot:content>
 </x-layout>
