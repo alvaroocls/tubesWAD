@@ -11,7 +11,7 @@
                         name="search" 
                         value="{{ request('search') }}" 
                         placeholder="Cari berdasarkan nama atau title..." 
-                        class="w-full px-4 py-2 border rounded-lg text-black" <!-- Tambahkan `text-black` -->
+                        class="w-full px-4 py-2 border rounded-lg text-black"
                     >
                     <button 
                         type="submit" 
@@ -20,6 +20,14 @@
                     </button>
                 </div>
             </form>
+
+            <!-- Button for Viewing Applications -->
+            <div class="mb-6">
+                <a href="{{ route('jobs.showapply') }}" 
+                   class="bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-green-700 transition">
+                   Lihat Lamaran Saya
+                </a>
+            </div>
 
             <!-- List of Jobs -->
             <div class="flex space-x-4 overflow-x-auto">
@@ -33,11 +41,13 @@
                     />
                 @endforeach
             </div>
+            
             @if ($jobs->isEmpty())
-            <div class="text-center mt-6 text-gray-500">
-                <p>Hasil pencarian untuk "<strong>{{ request('search') }}</strong>" tidak ditemukan.</p>
-            </div>
-             @endif
+                <div class="text-center mt-6 text-gray-500">
+                    <p>Hasil pencarian untuk "<strong>{{ request('search') }}</strong>" tidak ditemukan.</p>
+                </div>
+            @endif
+
             <!-- Pagination -->
             <div class="mt-8">
                 {{ $jobs->links() }}

@@ -8,7 +8,7 @@
             <!-- Tambahkan Informasi Saldo -->
             <div class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 p-4 rounded-lg mb-6 shadow-md">
                 <p class="text-lg font-semibold">Saldo Anda:</p>
-                <p class="text-2xl font-bold">Rp {{ number_format(auth()->user()->balance, 0, ',', '.') }}</p>
+                <p class="text-2xl font-bold">Rp {{ number_format(auth()->user()->saldo, 0, ',', '.') }}</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
