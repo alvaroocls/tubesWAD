@@ -76,6 +76,7 @@
                                 </div>
                             </div>
                         </div>
+                        
                     @empty
                         <tr>
                             <td class="px-6 py-4" colspan="4">
@@ -87,6 +88,7 @@
             </table>
         </div>
 
+        
         {{-- error message --}}
         @if ($errors->any())
             <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-4" role="alert">
