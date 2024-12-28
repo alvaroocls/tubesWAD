@@ -18,13 +18,15 @@ class PaymentController extends Controller
 
         $jobIds = PostingJob::where('user_id', $loggedInUserId)->pluck('id');
 
+        // ambil payment data yang job_id nya ada di $jobIds dan status dari applyJob nya adalah 'finished'
         $paymentData = Payment::whereIn('job_id', $jobIds)
             ->whereHas('applyJob', function ($query) {
                 $query->where('status', 'finished');
             })
             ->get();
-        return view('cafeOwner.payment.index', compact('paymentData'));
+        return view('cafeOwner.payment.index', compact('paymentData', 'loggedInUserId', 'jobIds'));
     }
+
 
     public function pay(Request $request, $id){
         $validated = $request->validate([

@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('name');
             $table->unsignedBigInteger('job_id');
             $table->foreign('job_id')->references('id')->on('posting_jobs');
+            $table->unsignedBigInteger('apply_id');
+            $table->foreign('apply_id')->references('id')->on('apply_jobs');            
             $table->dateTime('apply_date');
             $table->string('status')->default('pending');
         });

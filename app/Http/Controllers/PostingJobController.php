@@ -115,6 +115,7 @@ class PostingJobController extends Controller
             Payment::create([
                 'name' => $application->user->firstName . ' ' . $application->user->lastName,
                 'job_id' => $application->job_id,
+                'apply_id' => $application->id,
                 'apply_date' => $application->created_at,
             ]);
         }

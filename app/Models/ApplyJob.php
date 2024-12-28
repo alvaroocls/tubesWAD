@@ -27,6 +27,6 @@ class ApplyJob extends Model
     }
     public function payment()
     {
-        return $this->hasOne(Payment::class, 'apply_job_id');
+        return $this->hasOne(Payment::class, 'apply_id');
     }
 }
