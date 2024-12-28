@@ -3,6 +3,15 @@
         <div class="container mx-auto p-6">
             <h1 class="text-3xl font-bold mb-6 text-white">Lamaran Saya</h1>
 
+            <!-- Button to Go Back to Job Listings -->
+            <div class="mb-6">
+                <a href="{{ route('jobs.index') }}" 
+                   class="bg-blue-600 text-white py-3 px-6 rounded-lg shadow-md hover:bg-blue-700 transition duration-200"
+                >
+                    Kembali ke Daftar Pekerjaan
+                </a>
+            </div>
+
             @if ($appliedJobs->isEmpty())
                 <div class="text-center bg-gray-100 p-6 rounded-lg shadow">
                     <p class="text-gray-600">Anda belum melamar pekerjaan apa pun.</p>
@@ -17,8 +26,7 @@
                                 <strong>Status:</strong> 
                                 <span class="text-indigo-600 font-medium">{{ ucfirst($application->status) }}</span>
                             </p>
-                            
-                            
+
                             @if ($application->message)
                                 <p class="mt-4 text-gray-800">
                                     <strong>Pesan Lamaran:</strong> {{ $application->message }}

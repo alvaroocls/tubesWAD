@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Auth\Authenticatable;
@@ -20,7 +19,8 @@ class User extends AuthenticatableModel implements AuthenticatableContract
         'username',
         'password',
         'email',
-        'role'
+        'role',
+        'saldo'
     ];
 
     public $timestamps = false;
@@ -42,10 +42,6 @@ class User extends AuthenticatableModel implements AuthenticatableContract
     public function applications()
     {
     return $this->hasMany(ApplyJob::class);
-    }
-    public function musicianProfile()
-    {
-        return $this->hasOne(Musician::class);
     }
 
 }

@@ -28,24 +28,41 @@
                         {{ ucfirst($application['status']) }}
                     </td>
                     <td class="px-6 py-4">
-                        <form method="POST" action="{{ route('cafeOwner.postingJob.applicants.update', $application['id']) }}" class="inline">
-                            @csrf
-                            @method('PUT')
-                            <input type="hidden" name="status" value="accepted">
-                            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-                                Accept
-                            </button>
-                        </form>
-
-                        <form method="POST" action="{{ route('cafeOwner.postingJob.applicants.update', $application['id']) }}" class="inline">
-                            @csrf
-                            @method('PUT')
-                            <input type="hidden" name="status" value="rejected">
-                            <button type="submit" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
-                                Reject
-                            </button>
-                        </form>
+                        @if ($application['status'] === 'accepted')
+                            <form method="POST" action="{{ route('cafeOwner.postingJob.applicants.update', $application['id']) }}" class="inline">
+                                @csrf
+                                @method('PUT')
+                                <input type="hidden" name="status" value="finished">
+                                <button type="submit" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-900">
+                                    Finished
+                                </button>
+                            </form>
+                        @elseif ($application['status'] === 'finished')
+                            <a href="{{ url('/cafeOwner/payment') }}" class="focus:outline-none text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-900">
+                                Pay Musician
+                            </a>
+                        @else
+                            <form method="POST" action="{{ route('cafeOwner.postingJob.applicants.update', $application['id']) }}" class="inline">
+                                @csrf
+                                @method('PUT')
+                                <input type="hidden" name="status" value="accepted">
+                                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                                    Accept
+                                </button>
+                            </form>
+                    
+                            <form method="POST" action="{{ route('cafeOwner.postingJob.applicants.update', $application['id']) }}" class="inline">
+                                @csrf
+                                @method('PUT')
+                                <input type="hidden" name="status" value="rejected">
+                                <button type="submit" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+                                    Reject
+                                </button>
+                            </form>
+                        @endif
                     </td>
+                    
+                    
                 </tr>
             @empty
                 <tr>

@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostingJobController;
 use App\Http\Controllers\ApplyJobController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\MusicianController;
 use App\Http\Controllers\CafeOwnerController;
 use Illuminate\Support\Facades\Auth;
@@ -38,19 +39,9 @@ Route::middleware('auth')->group(function () {
         return view('musician.dashboard');
     })->name('musician.dashboard');
 
-
-    Route::middleware(['auth'])->group(function () {
-        Route::get('/musician/profile', [MusicianController::class, 'index'])->name('musician.profile.index');
-        Route::get('/musician/profile/create', [MusicianController::class, 'create'])->name('musician.profile.create');
-        Route::post('musician/profile/create', [MusicianController::class, 'store'])->name('musician.profile.store');
-        Route::get('/musician/{id}/profile', [MusicianController::class, 'show'])->name('musician.profile.show');
-        Route::get('/musician/{id}/profile/edit', [MusicianController::class, 'edit'])->name('musician.profile.edit');
-        Route::put('/musician/{id}/profile/update', [MusicianController::class, 'update'])->name('musician.profile.update');
-        Route::delete('/musician/{id}/profile/delete', [MusicianController::class, 'destroy'])->name('musician.profile.destroy');
-    });
     // Route::get('/musician/profile',function(){
     //     return view('musician.profile');
-    // })->name('musician.profile');
+    // })->name('musician.profile.');
 
     Route::get('/musician/filter',function(){
         return view('musician.filter');
@@ -97,27 +88,18 @@ Route::middleware('auth')->group(function () {
 
     // Posting job section
 
-    Route::middleware(['auth'])->group(function () {
-        Route::get('/cafeOwner/profile', [CafeOwnerController::class, 'index'])->name('cafeOwner.profile.index');
-        Route::get('/cafeOwner/profile/create', [CafeOwnerController::class, 'create'])->name('cafeOwner.profile.create');
-        Route::post('/cafeOwner/profile/create', [CafeOwnerController::class, 'store'])->name('cafeOwner.profile.store');
-        Route::get('/cafeOwner/{id}/profile', [CafeOwnerController::class, 'show'])->name('cafeOwner.profile.show');
-        Route::get('/cafeOwner/{id}/profile/edit', [CafeOwnerController::class, 'edit'])->name('cafeOwner.profile.edit');
-        Route::put('/cafeOwner/{id}/profile/update', [CafeOwnerController::class, 'update'])->name('cafeOwner.profile.update');
-        Route::delete('/cafeOwner/{id}/profile/delete', [CafeOwnerController::class, 'destroy'])->name('cafeOwner.profile.destroy');
-    });
-    
-    
-
-    // Route::get('/cafeOwner/profile',function(){
-    //     return view('cafeOwner.profile');
-    // })->name('cafeOwner.profile');
+    Route::get('/cafeOwner/profile',function(){
+        return view('cafeOwner.profile');
+    })->name('cafeOwner.profile');
 
     Route::get('/cafeOwner/review',function(){
         return view('cafeOwner.review');
     })->name('cafeOwner.review');
 
     Route::get('/cafeOwner/payment', [PaymentController::class, 'index'])->name('cafeOwner.payment.index');
+
+    Route::put('cafeOwner/payment/{id}', [PaymentController::class, 'pay'])->name('cafeOwner.payment.pay');
+
 
 
     Route::get('/jobs', [ApplyJobController::class, 'index'])->name('jobs.index');
@@ -127,8 +109,34 @@ Route::middleware('auth')->group(function () {
     Route::get('/jobs/{id}/edit', [ApplyJobController::class, 'edit'])->name('jobs.edit');
     Route::put('/jobs/{id}', [ApplyJobController::class, 'update'])->name('jobs.update');
     Route::get('/showapply', [ApplyJobController::class, 'showAppliedJobs'])->name('jobs.showapply');
+
+
+    Route::middleware(['auth'])->prefix('musician/reviews')->group(function () {
+        Route::get('/', [ReviewController::class, 'indexForMusicians'])->name('musician.review');
+        Route::get('/reviewcafe', [ReviewController::class,'showCreate'])->name('musician.review.create');
+        Route::post('/',[ReviewController::class,'createReviewForMusician'])->name('musician.review.store');
+        Route::get('review/edit/{id}', [ReviewController::class, 'edit'])->name('musician.review.edit');
+        Route::put('review/update/{id}', [ReviewController::class, 'update'])->name('musician.review.update');
+        Route::delete('review/destroy/{id}', [ReviewController::class, 'destroy'])->name('musician.review.destroy');
+    });
+    
+    Route::middleware(['auth'])->prefix('cafeOwner/reviews')->group(function () {
+        Route::get('/', [App\Http\Controllers\ReviewController::class, 'indexForCafes'])->name('cafeOwner.review');
+        Route::get('/create', [App\Http\Controllers\ReviewController::class, 'showCreateCafe'])->name('cafeOwner.review.create');
+        Route::post('/', [ReviewController::class, 'createReviewForCafe'])->name('cafeOwner.review.store');
+        Route::get('/{id}/edit', [App\Http\Controllers\ReviewController::class, 'edit'])->name('cafeOwner.review.edit');
+        Route::put('/{id}', [App\Http\Controllers\ReviewController::class, 'update'])->name('cafeOwner.review.update');
+        Route::delete('/{id}', [App\Http\Controllers\ReviewController::class, 'destroy'])->name('cafeOwner.review.destroy');
+    });
+
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/musician/profile', [MusicianController::class, 'index'])->name('musician.profile.index');
+        Route::get('/musician/profile/create', [MusicianController::class, 'create'])->name('musician.profile.create');
+        Route::post('musician/profile/create', [MusicianController::class, 'store'])->name('musician.profile.store');
+        Route::get('/musician/{id}/profile', [MusicianController::class, 'show'])->name('musician.profile.show');
+        Route::get('/musician/{id}/profile/edit', [MusicianController::class, 'edit'])->name('musician.profile.edit');
+        Route::put('/musician/{id}/profile/update', [MusicianController::class, 'update'])->name('musician.profile.update');
+        Route::delete('/musician/{id}/profile/delete', [MusicianController::class, 'destroy'])->name('musician.profile.destroy');
+    });
+
 });
-
-
-
-

@@ -7,33 +7,47 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Models\ApplyJob;
 use App\Models\PostingJob;
+use App\Models\Payment;
 
 
 class PaymentController extends Controller
 {
     public function index()
     {
-        // Mendapatkan user yang sedang login
         $loggedInUserId = Auth::id();
 
-        // Mendapatkan job_id dari tabel PostingJob yang dibuat oleh user yang login
         $jobIds = PostingJob::where('user_id', $loggedInUserId)->pluck('id');
 
-        // Mendapatkan data dari ApplyJob dengan status 'accepted' dan job_id yang sesuai
-        $acceptedApplications = ApplyJob::whereIn('job_id', $jobIds)
-            ->where('status', 'accepted')
-            ->with(['user:id,firstName,lastName']) // Mengambil user data
+        // ambil payment data yang job_id nya ada di $jobIds dan status dari applyJob nya adalah 'finished'
+        $paymentData = Payment::whereIn('job_id', $jobIds)
+            ->whereHas('applyJob', function ($query) {
+                $query->where('status', 'finished');
+            })
             ->get();
+        
+        
+        return view('cafeOwner.payment.index', compact('paymentData', 'loggedInUserId', 'jobIds'));
+    }
 
-        // Format data untuk ditampilkan
-        $paymentData = $acceptedApplications->map(function ($application) {
-            return [
-                'name' => $application->user->firstName . ' ' . $application->user->lastName,
-                'apply_date' => $application->created_at->format('Y-m-d H:i:s'),
-            ];
-        });
 
-        // Return ke view dengan data
-        return view('cafeOwner.payment.index', compact('paymentData'));
+    public function pay(Request $request, $id){
+        $validated = $request->validate([
+            'payment_id' => 'required|exists:payments,id',
+            'amount' => 'required|numeric|min:1',
+        ]);
+    
+        // Cari payment dan user terkait
+        $payment = Payment::findOrFail($validated['payment_id']);
+        $user = $payment->applyJob->user;
+    
+        // Tambahkan saldo ke user
+        $user->increment('saldo', $validated['amount']);
+    
+        // Update status payment menjadi 'paid'
+        $payment->update([
+            'status' => 'paid',
+        ]);
+    
+        return redirect()->back()->with('success', 'Payment successfully processed.');
     }
 }

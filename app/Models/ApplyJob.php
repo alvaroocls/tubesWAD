@@ -9,7 +9,7 @@ class ApplyJob extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['job_id', 'user_id', 'message', 'status'];
+    protected $fillable = ['job_id', 'user_id', 'message', 'status', 'saldo'];
 
     public function job()
     {
@@ -24,5 +24,9 @@ class ApplyJob extends Model
     public function getPreferencesAttribute($value)
     {
         return explode(',', $value);
+    }
+    public function payment()
+    {
+        return $this->hasOne(Payment::class, 'apply_id');
     }
 }
