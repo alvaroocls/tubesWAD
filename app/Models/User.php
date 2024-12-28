@@ -19,7 +19,8 @@ class User extends AuthenticatableModel implements AuthenticatableContract
         'username',
         'password',
         'email',
-        'role'
+        'role',
+        'saldo'
     ];
 
     public $timestamps = false;

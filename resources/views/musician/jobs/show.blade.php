@@ -15,7 +15,7 @@
 
                 <div class="mt-8 space-y-4">
                     <p class="text-lg text-gray-700">
-                        <strong class="font-medium text-indigo-600">Disediakan oleh:</strong> {{ $job->user->name }}
+                        <strong class="font-medium text-indigo-600">Disediakan oleh:</strong> {{ $job->user->firstName }}
                     </p>
                     <p class="text-lg text-gray-700">
                         <strong class="font-medium text-indigo-600">Preferensi:</strong> {{ $job->preferences }}

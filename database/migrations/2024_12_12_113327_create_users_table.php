@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password',255);
             $table->string('role');
+            $table->integer('saldo')->default(0);
         });
     }
 
