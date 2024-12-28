@@ -13,7 +13,8 @@ class CreateApplyJobsTable extends Migration
             $table->foreignId('job_id')->constrained('posting_jobs')->cascadeOnDelete();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->string('message', 255)->nullable();
-            $table->enum('status', ['pending', 'accepted', 'rejected'])->default('pending');
+            $table->enum('status', ['pending', 'accepted', 'rejected', 'finished'])->default('pending');
+            $table->decimal('saldo', 15, 2)->default(0); 
             $table->timestamps();
         });
     }
