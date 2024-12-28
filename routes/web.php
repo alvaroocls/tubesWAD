@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostingJobController;
 use App\Http\Controllers\ApplyJobController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
@@ -106,8 +107,24 @@ Route::middleware('auth')->group(function () {
     Route::get('/jobs/{id}/edit', [ApplyJobController::class, 'edit'])->name('jobs.edit');
     Route::put('/jobs/{id}', [ApplyJobController::class, 'update'])->name('jobs.update');
     Route::get('/showapply', [ApplyJobController::class, 'showAppliedJobs'])->name('jobs.showapply');
+
+
+    Route::middleware(['auth'])->prefix('musician/reviews')->group(function () {
+        Route::get('/', [ReviewController::class, 'indexForMusicians'])->name('musician.review');
+        Route::get('/reviewcafe', [ReviewController::class,'showCreate'])->name('musician.review.create');
+        Route::post('/',[ReviewController::class,'createReviewForMusician'])->name('musician.review.store');
+        Route::get('review/edit/{id}', [ReviewController::class, 'edit'])->name('musician.review.edit');
+        Route::put('review/update/{id}', [ReviewController::class, 'update'])->name('musician.review.update');
+        Route::delete('review/destroy/{id}', [ReviewController::class, 'destroy'])->name('musician.review.destroy');
+    });
+    
+    Route::middleware(['auth'])->prefix('cafeOwner/reviews')->group(function () {
+        Route::get('/', [App\Http\Controllers\ReviewController::class, 'indexForCafes'])->name('cafeOwner.review');
+        Route::get('/create', [App\Http\Controllers\ReviewController::class, 'showCreateCafe'])->name('cafeOwner.review.create');
+        Route::post('/', [ReviewController::class, 'createReviewForCafe'])->name('cafeOwner.review.store');
+        Route::get('/{id}/edit', [App\Http\Controllers\ReviewController::class, 'edit'])->name('cafeOwner.review.edit');
+        Route::put('/{id}', [App\Http\Controllers\ReviewController::class, 'update'])->name('cafeOwner.review.update');
+        Route::delete('/{id}', [App\Http\Controllers\ReviewController::class, 'destroy'])->name('cafeOwner.review.destroy');
+    });
+
 });
-
-
-
-
