@@ -24,6 +24,8 @@ class PaymentController extends Controller
                 $query->where('status', 'finished');
             })
             ->get();
+        
+        
         return view('cafeOwner.payment.index', compact('paymentData', 'loggedInUserId', 'jobIds'));
     }
 
