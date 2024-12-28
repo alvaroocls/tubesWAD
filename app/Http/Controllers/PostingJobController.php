@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\PostingJob;
 use App\Models\User;
 use App\Models\ApplyJob;
+use App\Models\Payment;
 
 class PostingJobController extends Controller
 {
@@ -101,7 +102,7 @@ class PostingJobController extends Controller
 
     public function updateStatus(Request $request,$id){
         $validated = $request->validate([
-            'status' => 'required|in:accepted,rejected',
+            'status' => 'required|in:accepted,rejected,finished',
         ]);
 
         $application = ApplyJob::findOrFail($id);
@@ -109,6 +110,14 @@ class PostingJobController extends Controller
         $application->update([
             'status' => $validated['status'],
         ]);
+
+        if ($validated['status'] === 'finished') {
+            Payment::create([
+                'name' => $application->user->firstName . ' ' . $application->user->lastName,
+                'job_id' => $application->job_id,
+                'apply_date' => $application->created_at,
+            ]);
+        }
 
         return redirect()->back()->with('success', 'Application status updated successfully.');
     }

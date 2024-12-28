@@ -25,4 +25,8 @@ class ApplyJob extends Model
     {
         return explode(',', $value);
     }
+    public function payment()
+    {
+        return $this->hasOne(Payment::class, 'apply_job_id');
+    }
 }

@@ -95,6 +95,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/cafeOwner/payment', [PaymentController::class, 'index'])->name('cafeOwner.payment.index');
 
+    Route::put('cafeOwner/payment/pay/{id}', [PaymentController::class, 'pay'])->name('cafeOwner.payment.pay');
+
+
 
     Route::get('/jobs', [ApplyJobController::class, 'index'])->name('jobs.index');
     Route::get('/jobs/{id}', [ApplyJobController::class, 'show'])->name('jobs.show');
