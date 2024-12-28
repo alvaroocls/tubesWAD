@@ -36,37 +36,3 @@
     </x-slot:content>
 </x-layout>
 
-
-
-{{-- <x-layout>
-    <x-slot:content>
-        <div class="container mt-5">
-            @if ($musician)
-                <h1>{{ $musician->name }}</h1>
-                <p><strong>Genre:</strong> {{ $musician->genre }}</p>
-                <p><strong>Location:</strong> {{ $musician->location }}</p>
-                <p><strong>Bio:</strong> {{ $musician->bio }}</p>
-
-                @if ($musician->photo)
-                    <img src="{{ asset('storage/' . $musician->photo) }}" alt="{{ $musician->name }}" style="max-width: 300px;">
-                @else
-                    <p>No photo available</p>
-                @endif
-
-                <br><br>
-                <a href="{{ route('musician.profile.index') }}" class="btn btn-secondary">Back</a>
-                <a href="{{ route('musician.profile.edit', $musician->id) }}" class="btn btn-warning">Edit Profile</a> <!-- Edit button -->
-
-                <!-- Delete Profile Form -->
-                <form action="{{ route('musician.profile.destroy', $musician->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this profile?');">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete Profile</button>
-                </form>
-            @else
-                <h2>Data Kosong, Harap Lengkapi Profile Anda</h2>
-                <a href="{{ route('musician.profile.create') }}" class="btn btn-primary">Create Profile</a>
-            @endif
-        </div>
-    </x-slot:content>
-</x-layout> --}}
