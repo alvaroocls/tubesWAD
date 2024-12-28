@@ -6,13 +6,29 @@
     <title>About</title>
     @vite(['resources/css/app.css','resources/js/app.js'])
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-<body class="text-white">
-    <x-navbar></x-navbar>        
-    <div class="mt-28">
-        
-        {{$content}}
+</head>
+<body class="flex flex-col min-h-screen text-white">
 
-    </div>
+    <!-- Navbar -->
+    @auth
+        @if (auth()->user()->role == 'musician')
+            <x-navbar-musician></x-navbar-musician>
+        @elseif (auth()->user()->role == 'cafeOwner')
+            <x-navbarcafe-owner></x-navbarcafe-owner>
+        @endif    
+    @endauth
+
+    @guest
+        <x-navbar></x-navbar>
+    @endguest
+
+    <!-- Content -->
+    <main class="flex-grow mt-28">
+        {{$content}}
+    </main>
+
+    <!-- Footer -->
     <x-footer></x-footer>
+
 </body>
 </html>

@@ -1,38 +1,34 @@
 <x-layout>
     <x-slot:content>
-        <h1>
-            Ini home nya musician
-        </h1>
+        <div class="container mx-auto p-6">
+            <h1 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
+                Dashboard Musician
+            </h1>
 
-        <a href="{{ route('musician.filter') }}">
-            <x-primarybutton>
-                filter
-            </x-primarybutton>    
-        </a>
-        
-        <a href="{{ route('musician.profile') }}">
-            <x-primarybutton>
-                profile
-            </x-primarybutton>
-        </a>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <x-card 
+                    emoji="🎸" 
+                    title="Show Profile" 
+                    description="Lihat Profile Anda!"
+                    link="{{ route('musician.profile.index') }}" />
 
-        <a href="{{ route('musician.review') }}">
-            <x-primarybutton>
-                review
-            </x-primarybutton>
-        </a>
+                <x-card 
+                    emoji="⭐" 
+                    title="Review Anda" 
+                    description="Lihat feedback dari Cafe."
+                    link="{{ route('musician.review') }}" />
 
-        <a href="{{ route('musician.portofolio') }}">
-            <x-primarybutton>
-                portofolio
-            </x-primarybutton>
-        </a>
+                <x-card 
+                    emoji="📁" 
+                    title="Portofolio" 
+                    description="Tampilkan karya terbaik Anda!"
+                    link="{{ route('musician.portofolio') }}" />
 
-        <a href="{{ route('musician.apply') }}">
-            <x-primarybutton>
-                apply
-            </x-primarybutton>
-        </a>
-
+                <x-card 
+                    emoji="🎤" 
+                    title="Apply Live Music" 
+                    description="Ajukan lamaran untuk live music di Cafe."
+                    link="{{ route('jobs.index') }}" /> 
+        </div>
     </x-slot:content>
 </x-layout>

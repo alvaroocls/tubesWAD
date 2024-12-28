@@ -54,11 +54,13 @@
 
                 <div class="text-left flex mt-24 gap-24">
                     <x-card
+                        link=""
                         emoji="🔎"
                         title="Find the perfect musician easily"
                         description="Discover a wide range of talented musicians for every occasion, from solo performers to full bands. Our platform allows you to browse profiles by event type, location, and budget. Whether you're planning a wedding, corporate event, or casual gathering, find musicians who align perfectly with your vision."
                     />
                     <x-card
+                        link=""
                         emoji="📝"
                         title="Instant Booking System"
                         description="Gone are the days of endless back-and-forths. With our intuitive booking system, you can easily secure your desired musician within minutes. The process is simple and hassle-free: select a musician, review their availability, and confirm your booking. Instant notifications ensure both you and the musician are aligned from the start."
@@ -67,11 +69,13 @@
 
                 <div class="text-left flex mt-24 gap-24">
                     <x-card
+                        link=""
                         emoji="☑️"
                         title="Verified Profiles and Reviews"
                         description="Every musician on our platform has a detailed profile showcasing their skills, experience, and sample performances. To help you make informed decisions, our review system includes genuine feedback from past clients. Rest assured, you’re hiring trusted professionals who meet your expectations."
                     />
                     <x-card
+                        link=""
                         emoji="💸"
                         title="Flexible Payment Options"
                         description="We provide multiple payment methods to suit your convenience, including credit cards, e-wallets, and bank transfers. All transactions are handled securely, with complete transparency. Plus, we offer a clear refund policy to protect both clients and musicians in case of any unforeseen issues."
