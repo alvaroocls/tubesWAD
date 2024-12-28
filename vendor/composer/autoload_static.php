@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit2f35eb54c130f94469daf8e674a53143
+class ComposerStaticInit99f5f1a1347f489c1b2199bc8d6cecb2
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -348,8 +348,8 @@ class ComposerStaticInit2f35eb54c130f94469daf8e674a53143
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-factory/src',
-            1 => __DIR__ . '/..' . '/psr/http-message/src',
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+            1 => __DIR__ . '/..' . '/psr/http-factory/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -540,13 +540,23 @@ class ComposerStaticInit2f35eb54c130f94469daf8e674a53143
 
     public static $classMap = array (
         'App\\Http\\Controllers\\ApplyJobController' => __DIR__ . '/../..' . '/app/Http/Controllers/ApplyJobController.php',
+        'App\\Http\\Controllers\\CafeOwnerController' => __DIR__ . '/../..' . '/app/Http/Controllers/CafeOwnerController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\MusicianController' => __DIR__ . '/../..' . '/app/Http/Controllers/MusicianController.php',
+        'App\\Http\\Controllers\\PaymentController' => __DIR__ . '/../..' . '/app/Http/Controllers/PaymentController.php',
         'App\\Http\\Controllers\\PostingJobController' => __DIR__ . '/../..' . '/app/Http/Controllers/PostingJobController.php',
+        'App\\Http\\Controllers\\ReviewController' => __DIR__ . '/../..' . '/app/Http/Controllers/ReviewController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Requests\\AuthUserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/AuthUserRequest.php',
         'App\\Http\\Requests\\StoreUserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreUserRequest.php',
         'App\\Models\\ApplyJob' => __DIR__ . '/../..' . '/app/Models/ApplyJob.php',
+        'App\\Models\\CafeOwner' => __DIR__ . '/../..' . '/app/Models/CafeOwner.php',
+        'App\\Models\\Musician' => __DIR__ . '/../..' . '/app/Models/Musician.php',
+        'App\\Models\\Payment' => __DIR__ . '/../..' . '/app/Models/Payment.php',
         'App\\Models\\PostingJob' => __DIR__ . '/../..' . '/app/Models/PostingJob.php',
+        'App\\Models\\Review' => __DIR__ . '/../..' . '/app/Models/Review.php',
+        'App\\Models\\ReviewCafe' => __DIR__ . '/../..' . '/app/Models/ReviewCafe.php',
+        'App\\Models\\ReviewMusician' => __DIR__ . '/../..' . '/app/Models/ReviewMusician.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\View\\Components\\NavbarMusician' => __DIR__ . '/../..' . '/app/View/Components/NavbarMusician.php',
@@ -6756,9 +6766,9 @@ class ComposerStaticInit2f35eb54c130f94469daf8e674a53143
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit2f35eb54c130f94469daf8e674a53143::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit2f35eb54c130f94469daf8e674a53143::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit2f35eb54c130f94469daf8e674a53143::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit99f5f1a1347f489c1b2199bc8d6cecb2::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit99f5f1a1347f489c1b2199bc8d6cecb2::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit99f5f1a1347f489c1b2199bc8d6cecb2::$classMap;
 
         }, null, ClassLoader::class);
     }

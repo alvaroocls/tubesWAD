@@ -16,7 +16,7 @@
                     emoji="🎸" 
                     title="Show Profile" 
                     description="Lihat Profile Anda!"
-                    link="{{ route('musician.profile') }}" />
+                    link="{{ route('musician.profile.index') }}" />
 
                 <x-card 
                     emoji="⭐" 
