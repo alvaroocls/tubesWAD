@@ -6,9 +6,10 @@
     <title>About</title>
     @vite(['resources/css/app.css','resources/js/app.js'])
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+</head>
+<body class="flex flex-col min-h-screen text-white">
 
-<body class="text-white">
-    
+    <!-- Navbar -->
     @auth
         @if (auth()->user()->role == 'musician')
             <x-navbar-musician></x-navbar-musician>
@@ -21,11 +22,13 @@
         <x-navbar></x-navbar>
     @endguest
 
-    <div class="mt-28">
-        
+    <!-- Content -->
+    <main class="flex-grow mt-28">
         {{$content}}
+    </main>
 
-    </div>
+    <!-- Footer -->
     <x-footer></x-footer>
+
 </body>
 </html>

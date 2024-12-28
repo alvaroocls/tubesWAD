@@ -1,7 +1,7 @@
 <x-layout>
     <x-slot:content>
         
-        <div class="max-w-6xl mx-auto">
+        <div class="max-w-6xl mx-32">
             <h1 class="text-4xl font-bold">Your job listings</h1>
 
             <div class="flex gap-4 my-8">

@@ -10,7 +10,7 @@
                     @auth
                     @if (auth()->user()->id == $job->user_id)
                         <div class="flex gap-4">
-                            <a>
+                            <a href="{{ route('cafeOwner.postingjob.applicants', $job->id) }}">
                                 <x-primarybutton>View Applicants</x-primarybutton>
                             </a>
                             
