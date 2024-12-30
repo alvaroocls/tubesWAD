@@ -389,13 +389,14 @@ class ComposerStaticInit99f5f1a1347f489c1b2199bc8d6cecb2
         array (
             0 => __DIR__ . '/..' . '/mockery/mockery/library/Mockery',
         ),
-        'League\\Uri\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/league/uri-interfaces',
-            1 => __DIR__ . '/..' . '/league/uri',
         'Masterminds\\' => 
         array (
             0 => __DIR__ . '/..' . '/masterminds/html5/src',
+        ),
+        'League\\Uri\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/uri',
+            1 => __DIR__ . '/..' . '/league/uri-interfaces',
         ),
         'League\\MimeTypeDetection\\' => 
         array (
@@ -546,24 +547,21 @@ class ComposerStaticInit99f5f1a1347f489c1b2199bc8d6cecb2
 
     public static $classMap = array (
         'App\\Http\\Controllers\\ApplyJobController' => __DIR__ . '/../..' . '/app/Http/Controllers/ApplyJobController.php',
-        'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
-        'App\\Http\\Controllers\\PortfolioController' => __DIR__ . '/../..' . '/app/Http/Controllers/PortfolioController.php',
-        'App\\Http\\Controllers\\PostingJobController' => __DIR__ . '/../..' . '/app/Http/Controllers/PostingJobController.php',
         'App\\Http\\Controllers\\CafeOwnerController' => __DIR__ . '/../..' . '/app/Http/Controllers/CafeOwnerController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\MusicianController' => __DIR__ . '/../..' . '/app/Http/Controllers/MusicianController.php',
         'App\\Http\\Controllers\\PaymentController' => __DIR__ . '/../..' . '/app/Http/Controllers/PaymentController.php',
+        'App\\Http\\Controllers\\PortfolioController' => __DIR__ . '/../..' . '/app/Http/Controllers/PortfolioController.php',
         'App\\Http\\Controllers\\PostingJobController' => __DIR__ . '/../..' . '/app/Http/Controllers/PostingJobController.php',
         'App\\Http\\Controllers\\ReviewController' => __DIR__ . '/../..' . '/app/Http/Controllers/ReviewController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Requests\\AuthUserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/AuthUserRequest.php',
         'App\\Http\\Requests\\StoreUserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreUserRequest.php',
         'App\\Models\\ApplyJob' => __DIR__ . '/../..' . '/app/Models/ApplyJob.php',
-        'App\\Models\\Portfolio' => __DIR__ . '/../..' . '/app/Models/Portfolio.php',
-        'App\\Models\\PostingJob' => __DIR__ . '/../..' . '/app/Models/PostingJob.php',
         'App\\Models\\CafeOwner' => __DIR__ . '/../..' . '/app/Models/CafeOwner.php',
         'App\\Models\\Musician' => __DIR__ . '/../..' . '/app/Models/Musician.php',
         'App\\Models\\Payment' => __DIR__ . '/../..' . '/app/Models/Payment.php',
+        'App\\Models\\Portfolio' => __DIR__ . '/../..' . '/app/Models/Portfolio.php',
         'App\\Models\\PostingJob' => __DIR__ . '/../..' . '/app/Models/PostingJob.php',
         'App\\Models\\Review' => __DIR__ . '/../..' . '/app/Models/Review.php',
         'App\\Models\\ReviewCafe' => __DIR__ . '/../..' . '/app/Models/ReviewCafe.php',

@@ -21,9 +21,10 @@
                         </div>
                         <div class="border-t border-gray-700 p-4">
                             <div class="flex justify-between items-center">
-                                <a href="{{ asset('storage/' . $portfolio->media) }}" target="_blank" class="text-sm text-blue-400 hover:underline">
-                                    <i class="fas fa-eye"></i> Lihat Media
-                                </a>
+                            <a href="{{ asset('img/' . $portfolio->media) }}" target="_blank" class="text-sm text-blue-400 hover:underline">
+    <i class="fas fa-eye"></i> Lihat Media
+</a>
+
                                 <a href="{{ route('musician.portfolio.edit', $portfolio->id) }}" class="px-3 py-1 bg-yellow-500 text-sm text-gray-900 font-semibold rounded-lg hover:bg-yellow-400">
                                     <i class="fas fa-edit"></i> Edit
                                 </a>
