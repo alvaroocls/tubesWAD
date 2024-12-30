@@ -4,6 +4,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostingJobController;
 use App\Http\Controllers\ApplyJobController;
+<<<<<<< Updated upstream
+=======
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\MusicianController;
+use App\Http\Controllers\CafeOwnerController;
+use App\Http\Controllers\PortfolioController;
+>>>>>>> Stashed changes
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
@@ -95,4 +103,29 @@ Route::middleware('auth')->group(function () {
 
 
 
+<<<<<<< Updated upstream
+=======
+   
+
+    Route::middleware(['auth'])->prefix('musician/portfolio')->group(function () {
+        Route::get('/', [App\Http\Controllers\PortfolioController::class, 'index'])->name('musician.portfolio.index'); // READ: Lihat semua portofolio
+        Route::get('/create', [App\Http\Controllers\PortfolioController::class, 'create'])->name('musician.portfolio.create'); // CREATE: Form tambah portofolio
+        Route::post('/', [App\Http\Controllers\PortfolioController::class, 'store'])->name('musician.portfolio.store'); // CREATE: Simpan portofolio baru
+        Route::get('/{id}/edit', [App\Http\Controllers\PortfolioController::class, 'edit'])->name('musician.portfolio.edit'); // UPDATE: Form edit portofolio
+        Route::put('/{id}', [App\Http\Controllers\PortfolioController::class, 'update'])->name('musician.portfolio.update'); // UPDATE: Simpan perubahan portofolio
+        Route::delete('/{id}', [App\Http\Controllers\PortfolioController::class, 'destroy'])->name('musician.portfolio.destroy'); // DELETE: Hapus portofolio
+    });
+    
+
+
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/musician/profile', [MusicianController::class, 'index'])->name('musician.profile.index');
+        Route::get('/musician/profile/create', [MusicianController::class, 'create'])->name('musician.profile.create');
+        Route::post('musician/profile/create', [MusicianController::class, 'store'])->name('musician.profile.store');
+        Route::get('/musician/{id}/profile', [MusicianController::class, 'show'])->name('musician.profile.show');
+        Route::get('/musician/{id}/profile/edit', [MusicianController::class, 'edit'])->name('musician.profile.edit');
+        Route::put('/musician/{id}/profile/update', [MusicianController::class, 'update'])->name('musician.profile.update');
+        Route::delete('/musician/{id}/profile/delete', [MusicianController::class, 'destroy'])->name('musician.profile.destroy');
+    });
+>>>>>>> Stashed changes
 
