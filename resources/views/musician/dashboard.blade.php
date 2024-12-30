@@ -28,7 +28,7 @@
                     emoji="📁" 
                     title="Portofolio" 
                     description="Tampilkan karya terbaik Anda!"
-                    link="{{ route('musician.portofolio') }}" />
+                    link="{{ route('musician.portfolio.index') }}" />
 
                 <x-card 
                     emoji="🎤" 
