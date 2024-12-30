@@ -4,14 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostingJobController;
 use App\Http\Controllers\ApplyJobController;
-<<<<<<< Updated upstream
-=======
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\MusicianController;
 use App\Http\Controllers\CafeOwnerController;
 use App\Http\Controllers\PortfolioController;
->>>>>>> Stashed changes
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
@@ -103,9 +100,6 @@ Route::middleware('auth')->group(function () {
 
 
 
-<<<<<<< Updated upstream
-=======
-   
 
     Route::middleware(['auth'])->prefix('musician/portfolio')->group(function () {
         Route::get('/', [App\Http\Controllers\PortfolioController::class, 'index'])->name('musician.portfolio.index'); // READ: Lihat semua portofolio
@@ -127,5 +121,5 @@ Route::middleware('auth')->group(function () {
         Route::put('/musician/{id}/profile/update', [MusicianController::class, 'update'])->name('musician.profile.update');
         Route::delete('/musician/{id}/profile/delete', [MusicianController::class, 'destroy'])->name('musician.profile.destroy');
     });
->>>>>>> Stashed changes
+
 
