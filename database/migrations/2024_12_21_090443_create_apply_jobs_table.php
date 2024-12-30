@@ -10,10 +10,10 @@ class CreateApplyJobsTable extends Migration
     {
         Schema::create('apply_jobs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('job_id')->constrained('posting_jobs')->onDelete('cascade');
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->string('message')->nullable();
-            $table->enum('status', ['pending', 'accepted', 'rejected'])->default('pending');
+            $table->foreignId('job_id')->constrained('posting_jobs')->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->string('message', 255)->nullable();
+            $table->enum('status', ['pending', 'accepted', 'rejected', 'finished'])->default('pending');
             $table->timestamps();
         });
     }

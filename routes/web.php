@@ -40,9 +40,9 @@ Route::middleware('auth')->group(function () {
         return view('musician.dashboard');
     })->name('musician.dashboard');
 
-    Route::get('/musician/profile',function(){
-        return view('musician.profile');
-    })->name('musician.profile');
+    // Route::get('/musician/profile',function(){
+    //     return view('musician.profile');
+    // })->name('musician.profile.');
 
     Route::get('/musician/filter',function(){
         return view('musician.filter');
@@ -82,6 +82,11 @@ Route::middleware('auth')->group(function () {
     Route::put('/cafeOwner/postingjob/{id}', [PostingJobController::class, 'update'])->name('cafeOwner.postingjob.update');
 
     Route::delete('/cafeOwner/postingjob/{id}', [PostingJobController::class, 'destroy'])->name('cafeOwner.postingjob.destroy');
+
+    Route::get('/cafeOwner/postingjob/{id}/applicants', [PostingJobController::class, 'applicants'])->name('cafeOwner.postingjob.applicants');
+
+    Route::put('/cafeOwner/postingJob/applicants/{id}/update', [PostingJobController::class, 'updateStatus'])->name('cafeOwner.postingJob.applicants.update');
+
     // Posting job section
 
     Route::get('/cafeOwner/profile',function(){
@@ -92,14 +97,48 @@ Route::middleware('auth')->group(function () {
         return view('cafeOwner.review');
     })->name('cafeOwner.review');
 
+    Route::get('/cafeOwner/payment', [PaymentController::class, 'index'])->name('cafeOwner.payment.index');
+
+    Route::put('cafeOwner/payment/{id}', [PaymentController::class, 'pay'])->name('cafeOwner.payment.pay');
+
+
+
     Route::get('/jobs', [ApplyJobController::class, 'index'])->name('jobs.index');
     Route::get('/jobs/{id}', [ApplyJobController::class, 'show'])->name('jobs.show');
     Route::post('/jobs/{id}/apply', [ApplyJobController::class, 'apply'])->name('jobs.apply');
-    Route::get('/jobs/showapply', [ApplyJobController::class, 'showAppliedJobs'])->name('jobs.apply.view');
-});
+    Route::delete('/jobs/{id}/cancel', [ApplyJobController::class, 'cancel'])->name('jobs.cancel');
+    Route::get('/jobs/{id}/edit', [ApplyJobController::class, 'edit'])->name('jobs.edit');
+    Route::put('/jobs/{id}', [ApplyJobController::class, 'update'])->name('jobs.update');
+    Route::get('/showapply', [ApplyJobController::class, 'showAppliedJobs'])->name('jobs.showapply');
 
 
+    Route::middleware(['auth'])->prefix('musician/reviews')->group(function () {
+        Route::get('/', [ReviewController::class, 'indexForMusicians'])->name('musician.review');
+        Route::get('/reviewcafe', [ReviewController::class,'showCreate'])->name('musician.review.create');
+        Route::post('/',[ReviewController::class,'createReviewForMusician'])->name('musician.review.store');
+        Route::get('review/edit/{id}', [ReviewController::class, 'edit'])->name('musician.review.edit');
+        Route::put('review/update/{id}', [ReviewController::class, 'update'])->name('musician.review.update');
+        Route::delete('review/destroy/{id}', [ReviewController::class, 'destroy'])->name('musician.review.destroy');
+    });
+    
+    Route::middleware(['auth'])->prefix('cafeOwner/reviews')->group(function () {
+        Route::get('/', [App\Http\Controllers\ReviewController::class, 'indexForCafes'])->name('cafeOwner.review');
+        Route::get('/create', [App\Http\Controllers\ReviewController::class, 'showCreateCafe'])->name('cafeOwner.review.create');
+        Route::post('/', [ReviewController::class, 'createReviewForCafe'])->name('cafeOwner.review.store');
+        Route::get('/{id}/edit', [App\Http\Controllers\ReviewController::class, 'edit'])->name('cafeOwner.review.edit');
+        Route::put('/{id}', [App\Http\Controllers\ReviewController::class, 'update'])->name('cafeOwner.review.update');
+        Route::delete('/{id}', [App\Http\Controllers\ReviewController::class, 'destroy'])->name('cafeOwner.review.destroy');
+    });
 
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/musician/profile', [MusicianController::class, 'index'])->name('musician.profile.index');
+        Route::get('/musician/profile/create', [MusicianController::class, 'create'])->name('musician.profile.create');
+        Route::post('musician/profile/create', [MusicianController::class, 'store'])->name('musician.profile.store');
+        Route::get('/musician/{id}/profile', [MusicianController::class, 'show'])->name('musician.profile.show');
+        Route::get('/musician/{id}/profile/edit', [MusicianController::class, 'edit'])->name('musician.profile.edit');
+        Route::put('/musician/{id}/profile/update', [MusicianController::class, 'update'])->name('musician.profile.update');
+        Route::delete('/musician/{id}/profile/delete', [MusicianController::class, 'destroy'])->name('musician.profile.destroy');
+    });
 
     Route::middleware(['auth'])->prefix('musician/portfolio')->group(function () {
         Route::get('/', [App\Http\Controllers\PortfolioController::class, 'index'])->name('musician.portfolio.index'); // READ: Lihat semua portofolio
